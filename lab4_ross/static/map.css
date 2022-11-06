@@ -7,3 +7,13 @@ body {
     height: 100%;
     width: 100%;
 }
+
+.leaflet-container { 
+    max-height: 85%; 
+    max-width:  95%;
+    margin-top: 1.5%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
