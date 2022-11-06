@@ -4,10 +4,19 @@ const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 const osm = L.tileLayer(url, { attribution: copy });
 const map = L.map("map", { layers: [osm], minZoom: 5 });
 
+const marker = L.marker();
+
 map.locate()
     .on("locationfound", (e) => map.setView(e.latlng, 8))
     .on("locationerror", () => map.setView([0, 0], 5));
-
+   
+map.on('click', function (e) {
+    console.log("Map Clicked");
+    marker
+        .setLatLng(e.latlng)
+        .addTo(map);
+    console.log(marker);
+});
 
 async function load_markers() {
     const markers_url = `/api/WorldBorder/?in_bbox=${map
