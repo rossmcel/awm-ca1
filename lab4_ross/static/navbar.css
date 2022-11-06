@@ -1,11 +1,12 @@
 .navbar-nav { 
     margin-left: auto;
+    margin-right: 2%;
 }
 
 .navbar-brand {
     margin-left: 2%;
 }
 
-.rightLink {
-    color: blue;
+.navbar-collapse {
+    padding-left: 2%;
 }
