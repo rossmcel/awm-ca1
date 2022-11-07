@@ -12,12 +12,25 @@ const marker = L.marker();
 
 map.locate({setView: true, maxZoom: 16});
 
+function onClickCurentMarker(e) {
+    const currentLocationMarker = L.marker()
+        .setLatLng(e.latlng);
+
+    const markerNameElement = document.getElementById("id_name");
+    const latElement = document.getElementById("id_lat");
+    const lngElement = document.getElementById("id_lng");
+    markerNameElement.value = "Current Location";
+    latElement.value = currentLocationMarker._latlng.lat;
+    lngElement.value = currentLocationMarker._latlng.lng;
+}
+
 function onLocationFound(e) {
     const radius = e.accuracy;
     const currentLocationMarker = L.marker();
     currentLocationMarker
     .setLatLng(e.latlng)
     .addTo(map)
+    .on('click', onClickCurentMarker)
     .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
     const markerNameElement = document.getElementById("id_name");
