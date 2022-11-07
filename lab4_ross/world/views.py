@@ -80,4 +80,4 @@ def add_marker_world_border_map_view(request):
     else:
         form = forms.AddMarkerForm()
 
-    return render(request, 'addmapmarker.html', {'form': form, "world_instance": world_instance, })
+    return render(request, 'map.html', {'form': form, "world_instance": world_instance, })

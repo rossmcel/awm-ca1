@@ -21,7 +21,18 @@
           <script src="{% static 'map.js' %}"></script>
         </div>
         <div class="col-sm" style="height: 100%;">
-          <div class="mapForm">Form</div>
+          <div class="mapForm">
+            <form method = "post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              {{ world_instance }}
+              {% if world_instance %}
+              <button type = "submit">Submit</button>
+              {% else %}
+              <a href="/map/add">Add a Marker</a>
+              {% endif %}
+            </form>
+          </div>
         </div>
       </div>
     </div>
