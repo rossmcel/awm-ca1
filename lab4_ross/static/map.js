@@ -31,7 +31,7 @@ function onLocationFound(e) {
     .setLatLng(e.latlng)
     .addTo(map)
     .on('click', onClickCurentMarker)
-    .bindPopup("You are within " + radius + " meters from this point").openPopup();
+    .bindPopup("You are within " + radius + " meters of this point").openPopup();
 
     const markerNameElement = document.getElementById("id_name");
     const latElement = document.getElementById("id_lat");
