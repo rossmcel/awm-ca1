@@ -73,6 +73,7 @@ def add_marker_world_border_map_view(request):
             world_instance.name = form.cleaned_data['name']
             pnt = Point(form.cleaned_data['lng'], form.cleaned_data['lat'])
             world_instance.location = pnt
+            world_instance.adderuser = request.user
             world_instance.save()
 
             # redirect to a new URL:
