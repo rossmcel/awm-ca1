@@ -40,6 +40,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 import datetime
 from django.views.generic.base import TemplateView
+from django.contrib.gis.geos import Point
 
 
 class Home(TemplateView):
@@ -70,11 +71,12 @@ def add_marker_world_border_map_view(request):
         if form.is_valid():
             # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
             world_instance.name = form.cleaned_data['name']
+            pnt = Point(form.cleaned_data['lng'], form.cleaned_data['lat'])
+            world_instance.location = pnt
             world_instance.save()
 
             # redirect to a new URL:
             return redirect('/map')
-            return HttpResponseRedirect(reverse('map/'))
 
     # If this is a GET (or any other method) create the default form.
     else:

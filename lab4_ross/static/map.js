@@ -18,8 +18,8 @@ map.on('click', function (e) {
     console.log(marker);
     //document.getElementById("selectedLocationLat").innerHTML = marker._latlng.lat;
     //document.getElementById("selectedLocationLng").innerHTML = marker._latlng.lng;
-    const latElement = document.getElementById("selectedLocationLat");
-    const lngElement = document.getElementById("selectedLocationLng");
+    const latElement = document.getElementById("id_lat");
+    const lngElement = document.getElementById("id_lng");
     latElement.value = marker._latlng.lat;
     lngElement.value = marker._latlng.lng;
 });

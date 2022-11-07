@@ -9,10 +9,12 @@ from . import models
 
 class AddMarkerForm(forms.Form):
     name = forms.CharField(max_length=30)
+    lat = forms.FloatField()
+    lng = forms.FloatField()
 
     class Meta:
         model = models.WorldBorder
-        fields = ('name',)
+        fields = ('name', 'lat', 'lng')
 
     # def clean_name(self):
     #     data = self.cleaned_data['name']
