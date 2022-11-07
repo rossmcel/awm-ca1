@@ -27,9 +27,12 @@
               {{ form.as_p }}
               {{ world_instance }}
               {% if world_instance %}
-              <button type = "submit">Submit</button>
+              <button type = "submit">Add to DB</button>
               {% else %}
-              <a href="/map/add">Add a Marker</a>
+              <!-- <input id="currentLatInput"></input>
+              <input id="currentLngInput"></input>
+              <button type = "submit">Add Current Location to Database</button> -->
+              <a href="/map/add">Add Marker to Database</a>
               {% endif %}
             </form>
           </div>
