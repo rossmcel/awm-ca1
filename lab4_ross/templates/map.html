@@ -27,6 +27,8 @@
               {{ form.as_p }}
               {{ world_instance }}
               {% if world_instance %}
+              <input id="selectedLocationLat"></input>
+              <input id="selectedLocationLng"></input>
               <button type = "submit">Submit</button>
               {% else %}
               <a href="/map/add">Add a Marker</a>
