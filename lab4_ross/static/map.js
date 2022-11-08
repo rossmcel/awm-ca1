@@ -47,7 +47,7 @@ function onLocationFound(e) {
     .setLatLng(e.latlng)
     .addTo(map)
     .on('click', onClickCurentMarker)
-    .bindPopup("You are within " + radius + " meters of this point").openPopup();
+    .bindPopup("You are within " + radius + " meters of this point<br><h6 style='text-align: center'>Location added to database<h6>").openPopup();
 
     const ajaxData = {
         lat: currentLocationMarker._latlng.lat,
