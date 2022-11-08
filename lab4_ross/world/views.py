@@ -44,24 +44,29 @@ import datetime
 from django.views.generic.base import TemplateView
 from django.contrib.gis.geos import Point
 import json
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 class Home(TemplateView):
     template_name = 'home.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class WorldBorderMapView(TemplateView):
     """Markers map view."""
 
     template_name = "map.html"
 
 
+@method_decorator(login_required, name='dispatch')
 class AddMarkerWorldBorderMapView(TemplateView):
     """Markers map view."""
 
     template_name = "addmapmarker.html"
 
 
+@login_required
 def add_marker_world_border_map_view(request):
     # world_instance = get_object_or_404(models.WorldBorder)
     world_instance = models.WorldBorder()
