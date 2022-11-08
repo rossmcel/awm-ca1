@@ -24,6 +24,22 @@ function onClickCurentMarker(e) {
     lngElement.value = currentLocationMarker._latlng.lng;
 }
 
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + "=")) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
 function onLocationFound(e) {
     const radius = e.accuracy;
     const currentLocationMarker = L.marker();
@@ -33,12 +49,48 @@ function onLocationFound(e) {
     .on('click', onClickCurentMarker)
     .bindPopup("You are within " + radius + " meters of this point").openPopup();
 
+    const ajaxData = {
+        lat: currentLocationMarker._latlng.lat,
+        lng: currentLocationMarker._latlng.lng,
+      }
+    $.ajax({
+        url: "/map/add/",
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify({payload: ajaxData,}),
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+        },
+        success: (data) => {
+          console.log(data);
+        },
+        error: (error) => {
+          console.log(error.responseText);
+        }
+      });
+
     const markerNameElement = document.getElementById("id_name");
     const latElement = document.getElementById("id_lat");
     const lngElement = document.getElementById("id_lng");
     markerNameElement.value = "Current Location";
     latElement.value = currentLocationMarker._latlng.lat;
     lngElement.value = currentLocationMarker._latlng.lng;
+
+
+        // fetch("/map/add", {
+        //     method: "POST",
+        //     credentials: "same-origin",
+        //     headers: {
+        //       "X-Requested-With": "XMLHttpRequest",
+        //       "X-CSRFToken": getCookie("csrftoken"),
+        //     },
+        //     body: JSON.stringify({payload: currentLocationMarker._latlng.lat})
+        //   })
+        //   .then(response => console.log(response))
+        //   .then(data => {
+        //     console.log(data);
+        //   });
 }
 
 map.on('locationfound', onLocationFound);
