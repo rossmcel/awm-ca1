@@ -44,14 +44,14 @@ This page displays any markers found in the database that were added by the curr
 
 <h4>Mobile Page Views</h4>
 <h5>Map</h5>
-<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
+<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; max-width=10vw">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/map-page-mobile.png" title="Map Page Mobile">
 </p>
-<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
+<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; max-width=10vw">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/map-page-mobile-2.png" title="Map Page Mobile 2">
 </p>
 <h5>Navigation Bar</h5>
-<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
+<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; max-width=10vw">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/navbar-mobile.png" title="Map Page Select Added">
 </p>
 
