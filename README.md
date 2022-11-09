@@ -1,7 +1,3 @@
-# Awm-ca1
-Advanced Web Mapping First Assignment
-
-
 # Advanced Web Mapping Continuous Assessment 1
 
 ## This is a Django web mapping app
@@ -18,7 +14,7 @@ This app provides features such as:
 
 <h4>Map Page</h4>
 <p style="text-align: center; margin: auto; width=30vw">
-This page display any markers found in the database that were added by the current user, including the current location of the user.
+This page displays any markers found in the database that were added by the current user, including the current location of the user.
 </p>
 <p style="text-align: center; margin: auto; width=30vw">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/map-page.png" title="Map Page">
