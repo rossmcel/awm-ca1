@@ -23,10 +23,9 @@ This page display any markers found in the database that were added by the curre
 <p style="text-align: center; margin: auto; width=30vw">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/map-page.png" title="Map Page">
 </p>
-
 <h5>Map Page - Select Location</h5>
 <p style="text-align: center; margin: auto; width=30vw">
-  Here, the user can add any location to the database by selecting it on the map, and clicking the submit button on the right.
+  Here, the user can add any location to the database by selecting it on the map, and clicking the submit button on the right (Note the marker on the left).
 </p>
 <p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
   <h6>Current Location Selected</h6>
@@ -36,7 +35,7 @@ This page display any markers found in the database that were added by the curre
 </p>
 <h5>Map Page - Selected Location Added</h5>
 <p style="text-align: center; margin: auto; width=30vw">
-  Once a location has been added by the user, it will display on the map.
+  Once a location has been added by the user, it will display on the map (Note the marker on the left).
 </p>
 <p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/selected-marker-added.png" title="Map Page Select Added">
@@ -45,6 +44,20 @@ This page display any markers found in the database that were added by the curre
 <p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/login.png" title="Login">
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/signup.png" title="Sign Up">
+</p>
+
+<h4>Mobile Page Views</h4>
+<h5>Map</h5>
+<p style="text-align: center; margin: auto; width=30vw">
+  <img src="https://github.com/rossmcel/awm-ca1" title="Map Page Mobile">
+</p>
+<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
+  <img src="https://github.com/rossmcel/awm-ca1" title="Map Page Mobile 2">
+  <img src="https://github.com/rossmcel/awm-ca1/blob/main/add-selected-marker-page-selected-marker-coordinates.png" title="Map Page Select">
+</p>
+<h5>Navigation Bar</h5>
+<p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
+  <img src="https://github.com/rossmcel/awm-ca1/blob/main/navbar-mobile.png" title="Map Page Select Added">
 </p>
 
 
