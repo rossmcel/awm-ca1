@@ -21,12 +21,12 @@ This page displays any markers found in the database that were added by the curr
 </p>
 <h5>Map Page - Select Location</h5>
 <p style="text-align: center; margin: auto; width=30vw">
-  Here, the user can add any location to the database by selecting it on the map, and clicking the submit button on the right (Note the marker on the left).
+  Here, the user can add any location to the database by selecting it on the map, and clicking the submit button on the right.
 </p>
 <p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
   <h6>Current Location Selected</h6>
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/add-selected-marker-page-current-location-coordinates.png" title="Map Page">
-  <h6>Chosen Location Selected</h6>
+  <h6>Chosen Location Selected (Note the marker on the left)</h6>
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/add-selected-marker-page-selected-marker-coordinates.png" title="Map Page Select">
 </p>
 <h5>Map Page - Selected Location Added</h5>
