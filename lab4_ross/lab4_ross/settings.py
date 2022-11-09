@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import socket
+from decouple import config
+import dj_database_url
 
 import os
 os.environ['PROJ_LIB'] = f"{os.environ.get('CONDA_PREFIX','')}/share/proj"
@@ -23,11 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yqv8+al9ue-6%7u80xz21+edeqby3s8iavvu^o$+8jnmh4fci2'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -45,7 +43,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_gis",
     'world',
-    'crispy_forms',
     'leaflet',
     "accounts",
 ]
@@ -81,44 +78,47 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lab4_ross.wsgi.application'
 
-
+# -----------------------------------------------
 # Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': 'gis',
-#         'USER': 'docker',
-#         'PASSWORD': 'docker',
-#         'HOST': 'lab4_network_internal',
-#         'PORT': 5432
-#     },
-# }
-
 if os.environ.get('CONDA_PREFIX', '').startswith('/opt'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'HOST': 'lab4_network_internal',
-            'NAME': 'gis',
-            'USER': 'docker',
-            'PASSWORD': 'docker',
-            'PORT': 5432
-        },
-    }
+    DATABASES = {'default': config(
+        'DATABASE_DOCKER', default=None, cast=dj_database_url.parse)}
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'HOST': 'localhost',
-            'NAME': 'gis',
-            'USER': 'docker',
-            'PASSWORD': 'docker',
-            'PORT': 25432
-        },
-    }
+    DATABASES = {'default': config(
+        'DATABASE_LOCAL', default=None, cast=dj_database_url.parse)}
+# -----------------------------------------------
+# ------------------------------------------
+SECRET_KEY = 'django-insecure-yqv8+al9ue-680xz21+edeqby3s8iavvu^o$+8jnmh4fci2'
+SECRET_KEY = config('SECRET_KEY', default=None)
+DEPLOY_SECURE = config('DEPLOY_SECURE', default=False, cast=bool)
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
+
+if socket.gethostname() == "MacBook Air":
+    DATABASES["default"]["HOST"] = "localhost"
+    DATABASES["default"]["PORT"] = 25432
+else:
+    DATABASES["default"]["HOST"] = "wmap-postgis"
+    DATABASES["default"]["PORT"] = 5432
+
+# Set DEPLOY_SECURE to True only for LIVE deployment
+if DEPLOY_SECURE:
+    DEBUG = False
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [
+                           s.strip() for s in v.split(',')])
+    CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=lambda v: [
+                                  s.strip() for s in v.split(',')])
+else:
+    DEBUG = True
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+    ALLOWED_HOSTS = []
+
+# ----------------------------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -150,24 +150,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-STATIC_URL = 'static/'
-#STATIC_ROOT = BASE_DIR / 'static'
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-CRISPY_FAIL_SILENTLY = not DEBUG
 
 LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (53.0, -8.0),
