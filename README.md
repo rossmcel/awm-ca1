@@ -30,7 +30,7 @@ This page display any markers found in the database that were added by the curre
 </p>
 <p style="text-align: center; margin-top: 3vh;  margin-left: 35vw; width=10vw">
   <h6>Current Location Selected</h6>
-  <img src=https://github.com/rossmcel/awm-ca1/blob/main/add-selected-marker-page-current-location-coordinates.png" title="Map Page">
+  <img src="https://github.com/rossmcel/awm-ca1/blob/main/add-selected-marker-page-current-location-coordinates.png" title="Map Page">
   <h6>Chosen Location Selected</h6>
   <img src="https://github.com/rossmcel/awm-ca1/blob/main/add-selected-marker-page-selected-marker-coordinates.png" title="Map Page Select">
 </p>
